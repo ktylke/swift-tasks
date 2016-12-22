@@ -24,7 +24,7 @@ class Zwierzak {
 
     func description() -> String {
         
-        return name + " - " + species + " - " + isThereAPicture()
+        return name + " - " + species + " – " + isThereAPicture() // name and species inversely on purpose
     }
     
     init(name: String, species: String, picture: UIImage?) {
