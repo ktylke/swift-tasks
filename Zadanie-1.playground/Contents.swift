@@ -34,6 +34,6 @@ class Zwierzak {
     }
 }
 
-var Sanic = Zwierzak(name: "Sanic", species: "The hedgehog", picture: nil)
+var Sanic = Zwierzak(name: "Pimpek", species: "Pies", picture: nil)
 
 Sanic.description()
