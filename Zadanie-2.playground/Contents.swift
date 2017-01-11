@@ -7,8 +7,8 @@ var str = "Hello, playground"
 class Zwierzak {
     var name: String
     var species: String
-    var weightInLbs: Float
     var picture: UIImage?
+    var weightInLbs: Float
     var hasPicture: Bool {
         get {
         
@@ -16,20 +16,21 @@ class Zwierzak {
             
             }
         }
+    
+    func isThereAPicture() -> String {
+        if hasPicture {
+            return "Posiada zdjęcie"
+        } else {
+            return "Nie posiada zdjęcia"
+        }
+    }
+    
     func description() -> String {
         
-        func isThereAPicture() -> String {
-            if hasPicture == true {
-                return "Posiada zdjęcie"
-            } else {
-                return "Nie posiada zdjęcia"
-            }
-        }
+        return name + " - " + species + " - " + isThereAPicture() + " - " //name and species inversely on purpose
         
-        return name + " - " + species + " - " + isThereAPicture() //name and species inversely on purpose
-       
-        }
-    
+    }
+
 
     init(name: String, species: String, weightInLbs: Float, picture: UIImage?) {
         self.name = name
@@ -42,16 +43,22 @@ class Zwierzak {
 }
 
 
-var Sanic = Zwierzak(name: "Pimpek", species: "Pies", weightInLbs: 10, picture: nil)
+var Sanic = Zwierzak(name: "Pimpek", species: "Pies", weightInLbs: 10.0, picture: nil)
+
+
 
 Sanic.description()
 
 
+
 extension Float {
     
-    func convertToKg(weightInLbs: Float) -> Float {
+    func convertToKg() -> Float {
     
-    return weightInLbs*0.45359237
+    return self*0.45359237
 
     }
 }
+
+let weightInLbs: Float = 100
+let weightInKg = weightInLbs.convertToKg()
