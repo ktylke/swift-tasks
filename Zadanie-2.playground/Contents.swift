@@ -27,7 +27,7 @@ class Zwierzak {
     
     func description() -> String {
         
-        return name + " - " + species + " - " + isThereAPicture() + " - " //name and species inversely on purpose
+        return name + " - " + species + " - " + isThereAPicture() + " - " + "Waga w kg: \(weightInLbs.convertToKg())" //name and species inversely on purpose
         
     }
 
@@ -60,5 +60,3 @@ extension Float {
     }
 }
 
-let weightInLbs: Float = 100
-let weightInKg = weightInLbs.convertToKg()
