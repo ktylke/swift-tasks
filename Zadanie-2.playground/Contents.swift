@@ -43,7 +43,17 @@ class Zwierzak {
 }
 
 
-var Sanic = Zwierzak(name: "Pimpek", species: "Pies", weightInLbs: 10.0, picture: nil)
+extension Float {
+    
+    func convertToKg() -> Float {
+        
+        return self*0.45359237
+        
+    }
+}
+
+
+var Sanic = Zwierzak(name: "Pimpek", species: "Pies", weightInLbs: 20.0, picture: nil)
 
 
 
@@ -51,12 +61,4 @@ Sanic.description()
 
 
 
-extension Float {
-    
-    func convertToKg() -> Float {
-    
-    return self*0.45359237
-
-    }
-}
 
