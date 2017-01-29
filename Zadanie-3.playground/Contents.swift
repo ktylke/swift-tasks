@@ -2,48 +2,40 @@ import UIKit
 
 //Enter dimensions of the boxes within quotation marks below:
 
-var dimensions: String = "2x3x4 5x6x7"
+var dimensions: String = "2x3x2 2x4x3"
 
 let dimensionsArray = dimensions.components(separatedBy: " ")
 
 var boxDimArray = [Int]()
-var boxSides = [Int]()
 var boxLengths = [Int]()
 var boxAreas = [Int]()
 
+
 for box in dimensionsArray {
     let boxDimensions = box.components(separatedBy: "x")
-    for i in 0..<boxDimensions.count {
-        if let dimension = Int(boxDimensions[i]) {
-            boxDimArray.append(dimension)
-        }
+    boxDimArray = boxDimensions.flatMap { Int($0) }
+    
+    if boxDimArray.count != 3 {
+        print("Something's wrong with your boxes!")
     }
     
+    var boxSide1 = boxDimArray[0] * boxDimArray[1]
+    var boxSide2 = boxDimArray[1] * boxDimArray[2]
+    var boxSide3 = boxDimArray[0] * boxDimArray[2]
+    //could use a loop here but the code would be more cluttered and longer
     
-    for i in 1...3 {
-        if i != 3 {
-        var boxSide = boxDimArray[i-1]*boxDimArray[i]
-            boxSides.append(boxSide)
-        } else {
-        var boxSide = boxDimArray[0]*boxDimArray[2]
-            boxSides.append(boxSide)
-        }
-    }
+    var boxSides = [boxSide1, boxSide2, boxSide3]
     
     var sideMin = boxSides.reduce(Int.max, { min($0, $1) })
     var sum = 2*(boxSides.reduce(0, +)) + sideMin
     
     boxAreas.append(sum)
-    boxSides.removeAll()
     
     var dimQuot = boxDimArray.reduce(1, *)
-    var dimMax = boxDimArray.reduce(Int.min, {max($0, $1) })
-    boxDimArray = boxDimArray.filter(){$0 != dimMax}
+    var boxDimAsc = boxDimArray.sorted(by: <) //sorting dimensions in ascending order to obtain two smallest values easily
     
-    var lengthOfRibbon = 2*boxDimArray[0]+2*boxDimArray[1]+dimQuot
+    var lengthOfRibbon = 2*(boxDimAsc[0]+boxDimAsc[1])+dimQuot
     boxLengths.append(lengthOfRibbon)
-    
-    boxDimArray.removeAll()
 }
 
 var areaSum = boxAreas.reduce(0, +)
