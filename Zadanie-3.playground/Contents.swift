@@ -12,12 +12,10 @@ var boxLengths = [Int]()
 var boxAreas = [Int]()
 
 for box in dimensionsArray {
-    
     let boxDimensions = box.components(separatedBy: "x")
-    
     for i in 0..<boxDimensions.count {
         if let dimension = Int(boxDimensions[i]) {
-        boxDimArray.append(dimension)
+            boxDimArray.append(dimension)
         }
     }
     
@@ -30,7 +28,6 @@ for box in dimensionsArray {
         var boxSide = boxDimArray[0]*boxDimArray[2]
             boxSides.append(boxSide)
         }
-
     }
     
     var sideMin = boxSides.reduce(Int.max, { min($0, $1) })
