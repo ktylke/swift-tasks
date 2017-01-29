@@ -2,7 +2,7 @@ import UIKit
 
 //Enter dimensions of the boxes within quotation marks below:
 
-var dimensions: String = "2x3x2 2x4x3"
+var dimensions: String = "2x2x2 3x4x5"
 
 let dimensionsArray = dimensions.components(separatedBy: " ")
 
@@ -10,12 +10,11 @@ var boxDimArray = [Int]()
 var boxLengths = [Int]()
 var boxAreas = [Int]()
 
-
 for box in dimensionsArray {
     let boxDimensions = box.components(separatedBy: "x")
     boxDimArray = boxDimensions.flatMap { Int($0) }
     
-    if boxDimArray.count != 3 {
+    if boxDimArray.count != 3 || boxDimArray.contains(0) {
         print("Something's wrong with your boxes!")
     }
     
@@ -26,14 +25,13 @@ for box in dimensionsArray {
     var boxSides = [boxSide1, boxSide2, boxSide3]
     
     var sideMin = boxSides.reduce(Int.max, { min($0, $1) })
-    var sum = 2*(boxSides.reduce(0, +)) + sideMin
+    var sum = 2 * (boxSides.reduce(0, +)) + sideMin
     
     boxAreas.append(sum)
     
-    var dimQuot = boxDimArray.reduce(1, *)
     var boxDimAsc = boxDimArray.sorted(by: <) //sorting dimensions in ascending order to obtain two smallest values easily
     
-    var lengthOfRibbon = 2*(boxDimAsc[0]+boxDimAsc[1])+dimQuot
+    var lengthOfRibbon = 2 * (boxDimAsc[0]+boxDimAsc[1]) + boxDimArray.reduce(1, *)
     boxLengths.append(lengthOfRibbon)
 }
 
