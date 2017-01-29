@@ -21,8 +21,7 @@ for box in dimensionsArray {
     
     var boxSide1 = boxDimArray[0] * boxDimArray[1]
     var boxSide2 = boxDimArray[1] * boxDimArray[2]
-    var boxSide3 = boxDimArray[0] * boxDimArray[2]
-    //could use a loop here but the code would be more cluttered and longer
+    var boxSide3 = boxDimArray[0] * boxDimArray[2] //could use a loop here but the code would be more cluttered and longer
     
     var boxSides = [boxSide1, boxSide2, boxSide3]
     
